@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>the sol side — soft opening open house</title>
+  <meta name="description" content="Soft opening open house at the sol side — a myofascial release studio, art gallery, and community wellness space in Swannanoa, NC. Saturday, May 17." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --gold: #C9973A;
+      --gold-light: #e0b96a;
+      --gold-faint: rgba(201, 151, 58, 0.12);
+      --ink: #2e2a25;
+      --muted: #7a7368;
+      --bg: #fdfaf6;
+      --rule: rgba(201, 151, 58, 0.3);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Layout ─────────────────────────────────────────── */
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    /* ─── Separator ───────────────────────────────────────── */
+
+    .rule {
+      width: 60px;
+      height: 1px;
+      background: var(--rule);
+      margin: 2.5rem auto;
+    }
+
+    .rule--wide {
+      width: 120px;
+    }
+
+    /* ─── Hero ────────────────────────────────────────────── */
+
+    .hero {
+      text-align: center;
+      padding-top: 6rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero__logo {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      margin: 0 auto 2.5rem;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .hero__soft {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      display: block;
+      margin-bottom: 0.6rem;
+      animation: fadeUp 1.2s ease 0.15s both;
+    }
+
+    .hero__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      animation: fadeUp 1.2s ease 0.25s both;
+    }
+
+    .hero__date {
+      display: block;
+      margin-top: 1.2rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      animation: fadeUp 1.2s ease 0.35s both;
+    }
+
+    .hero__welcome {
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 300;
+      animation: fadeUp 1.2s ease 0.45s both;
+    }
+
+    .hero__about {
+      margin-top: 2.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      animation: fadeUp 1.2s ease 0.55s both;
+    }
+
+    /* ─── Schedule ────────────────────────────────────────── */
+
+    .schedule {
+      position: relative;
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+
+    .schedule__watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      max-width: 90vw;
+      opacity: 0.045;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .schedule__heading {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .events {
+      list-style: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 0 2rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+
+    .event:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .event__time {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--gold);
+      letter-spacing: 0.01em;
+      padding-top: 0.1rem;
+    }
+
+    .event__body {}
+
+    .event__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: var(--ink);
+      line-height: 1.3;
+      display: block;
+    }
+
+    .event__with {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .schedule__note {
+      margin-top: 2.2rem;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Find Us ─────────────────────────────────────────── */
+
+    .findus {
+      text-align: center;
+    }
+
+    .findus__heading {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .findus__address {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .findus__address:hover {
+      color: var(--gold);
+      border-color: var(--gold-light);
+    }
+
+    .findus__landmark {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ─── Contact ─────────────────────────────────────────── */
+
+    .contact {
+      text-align: center;
+      padding-top: 3rem;
+      padding-bottom: 5rem;
+    }
+
+    .contact__heading {
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .contact__links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .contact__link {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact__link:hover {
+      color: var(--gold);
+      border-color: var(--gold-light);
+    }
+
+    /* ─── Footer ──────────────────────────────────────────── */
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 0 3.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .footer__tagline {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─── Animations ──────────────────────────────────────── */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─── Mobile ──────────────────────────────────────────── */
+
+    @media (max-width: 520px) {
+      section {
+        padding: 3.5rem 0;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+
+      .hero__logo {
+        max-width: 320px;
+      }
+
+      .event {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+
+      .event__time {
+        font-size: 0.85rem;
+        letter-spacing: 0.04em;
+      }
+
+      .event__name {
+        font-size: 1.15rem;
+      }
+
+      .schedule__watermark {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <section class="hero">
+      <img
+        src="largetext.png"
+        alt="the sol side — community · arts · wellbeing"
+        class="hero__logo"
+      />
+      <span class="hero__soft">soft opening</span>
+      <h1 class="hero__title">Open House</h1>
+      <span class="hero__date">Saturday, May 16</span>
+      <p class="hero__welcome">Everyone is welcome.</p>
+      <p class="hero__about">Myofascial release studio &nbsp;·&nbsp; art gallery &nbsp;·&nbsp; community wellness space</p>
+      <div class="rule rule--wide" style="margin-top: 2.5rem;"></div>
+    </section>
+
+    <!-- ── Schedule ──────────────────────────────────────── -->
+    <section class="schedule">
+      <img
+        src="smallenzo.png"
+        alt=""
+        class="schedule__watermark"
+        aria-hidden="true"
+      />
+
+      <p class="schedule__heading">Saturday's schedule</p>
+
+      <ul class="events">
+        <li class="event">
+          <span class="event__time">10:00 am</span>
+          <div class="event__body">
+            <span class="event__name">Qi Gong class</span>
+            <span class="event__with">with Emily</span>
+          </div>
+        </li>
+        <li class="event">
+          <span class="event__time">10:30–12:00 pm</span>
+          <div class="event__body">
+            <span class="event__name">Mini Myofascial Release sessions</span>
+            <span class="event__with">with Emily</span>
+          </div>
+        </li>
+        <li class="event">
+          <span class="event__time">11:00 am</span>
+          <div class="event__body">
+            <span class="event__name">Heart of Yoga class</span>
+            <span class="event__with">with Brunna</span>
+          </div>
+        </li>
+        <li class="event">
+          <span class="event__time">3:30–5:30 pm</span>
+          <div class="event__body">
+            <span class="event__name">Mini Massage sessions</span>
+            <span class="event__with">with Kiber</span>
+          </div>
+        </li>
+        <li class="event">
+          <span class="event__time">4:00 pm</span>
+          <div class="event__body">
+            <span class="event__name">Myofascial Meditation &amp; Sound Bath</span>
+            <span class="event__with">with Emily &amp; Nick</span>
+          </div>
+        </li>
+      </ul>
+
+      <p class="schedule__note">*BYO mat encouraged</p>
+    </section>
+
+    <!-- ── Find Us ───────────────────────────────────────── -->
+    <section class="findus">
+      <p class="findus__heading">Find us</p>
+      <a
+        href="https://maps.google.com/?q=113+Alexander+Pl,+Swannanoa,+NC"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="findus__address"
+      >
+        113 Alexander Pl, Swannanoa
+      </a>
+      <p class="findus__landmark">
+        on the same block as Short Sleeves, Blunt Pretzels, and Town Hardware
+      </p>
+    </section>
+
+    <!-- ── Contact ───────────────────────────────────────── -->
+    <section class="contact">
+      <p class="contact__heading">Get in touch</p>
+      <div class="contact__links">
+        <a href="tel:4844723626" class="contact__link">484-472-3626</a>
+        <a href="http://Emily-Smith.com" target="_blank" rel="noopener noreferrer" class="contact__link">Emily-Smith.com</a>
+      </div>
+    </section>
+
+  </div><!-- /page -->
+
+  <!-- ── Footer ────────────────────────────────────────── -->
+  <footer>
+    <p class="footer__tagline">community &nbsp;·&nbsp; arts &nbsp;·&nbsp; wellbeing</p>
+  </footer>
+
+</body>
+</html>
