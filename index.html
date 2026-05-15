@@ -38,6 +38,24 @@
       font-size: 16px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(640px, 92vw);
+      height: min(640px, 92vw);
+      background-image: url(solsidetransparent.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* ─── Layout ─────────────────────────────────────────── */
@@ -46,6 +64,8 @@
       max-width: 680px;
       margin: 0 auto;
       padding: 0 2rem;
+      position: relative;
+      z-index: 1;
     }
 
     section {
@@ -65,21 +85,39 @@
       width: 120px;
     }
 
+    /* ─── Navbar ──────────────────────────────────────────── */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #ffffff;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 2rem;
+    }
+
+    .navbar__logo {
+      height: 44px;
+      width: auto;
+      display: block;
+      animation: fadeUp 1.2s ease both;
+    }
+
     /* ─── Hero ────────────────────────────────────────────── */
 
     .hero {
       text-align: center;
       padding-top: 6rem;
-      padding-bottom: 4rem;
+      padding-bottom: 1.5rem;
     }
 
     .hero__logo {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-      display: block;
-      margin: 0 auto 2.5rem;
-      animation: fadeUp 1.2s ease both;
+      display: none;
     }
 
     .hero__soft {
@@ -373,15 +411,14 @@
 </head>
 <body>
 
+  <header class="navbar">
+    <img src="largetext.png" alt="the sol side" class="navbar__logo" />
+  </header>
+
   <div class="page">
 
     <!-- ── Hero ─────────────────────────────────────────── -->
     <section class="hero">
-      <img
-        src="largetext.png"
-        alt="the sol side — community · arts · wellbeing"
-        class="hero__logo"
-      />
       <span class="hero__soft">soft opening</span>
       <h1 class="hero__title">Open House</h1>
       <span class="hero__date">Saturday, May 16</span>
