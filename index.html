@@ -193,6 +193,19 @@
       user-select: none;
     }
 
+    .schedule__intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: var(--muted);
+      text-align: center;
+      letter-spacing: 0.02em;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
     .schedule__heading {
       font-family: 'Jost', sans-serif;
       font-weight: 500;
@@ -422,7 +435,8 @@
       <span class="hero__soft">soft opening</span>
       <h1 class="hero__title">Open House</h1>
       <span class="hero__date">Saturday, May 16</span>
-      <p class="hero__welcome">Everyone is welcome.</p>
+      <p class="hero__welcome">Oh — you just missed us.</p>
+      <p class="hero__welcome" style="margin-top: 0.5rem;">A class schedule is on its way. Keep an eye out.</p>
       <p class="hero__about">Myofascial Release & Massage Therapy &nbsp;·&nbsp; Pilates, Qigong, & Yoga &nbsp;·&nbsp; Meditation & Garden Sanctuary  &nbsp;·&nbsp; Art Gallery & Community Wellness Space </p>
       <div class="rule rule--wide" style="margin-top: 2.5rem;"></div>
     </section>
@@ -436,6 +450,7 @@
         aria-hidden="true"
       />
 
+      <p class="schedule__intro">Here's a taste of how things began — and a little glimpse of what's to come.</p>
       <p class="schedule__heading">Saturday's schedule</p>
 
       <ul class="events">
