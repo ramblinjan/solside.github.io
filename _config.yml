@@ -1,0 +1,14 @@
+title: the sol side
+description: >-
+  Myofascial release, massage, yoga, qigong & meditation —
+  community wellness space in Swannanoa, NC.
+url: "https://thesolside.com"
+baseurl: ""
+
+exclude:
+  - todo.md
+  - classes.md
+  - juneschedule.md
+  - services.md
+  - people/
+  - "*.pdf"

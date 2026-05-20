@@ -1,0 +1,47 @@
+- day: Monday
+  classes:
+    - time: "7:00 pm"
+      name: "Kung Fu: The Beginner's Mind"
+      with: Jan Kung Fu
+
+- day: Tuesday
+  classes:
+    - time: "1:00 pm"
+      name: Rocking and Rolling Your Joints for Longevity
+      with: Emily Smith
+
+- day: Wednesday
+  classes:
+    - time: "12:00 pm"
+      name: Myofascial Pilates
+      with: Emily Smith
+    - time: "5:00 pm"
+      name: Qigong / Myofascial Meditation
+      with: Emily Smith
+    - time: "6:15 pm"
+      name: Myofascial Pilates
+      with: Emily Smith
+
+- day: Thursday
+  classes:
+    - time: "1:00 pm"
+      name: Rocking and Rolling Your Joints for Longevity
+      with: Emily Smith
+    - time: "7:00 pm"
+      name: "Kung Fu: The Beginner's Mind"
+      with: Jan Kung Fu
+
+- day: Friday
+  classes:
+    - time: "7:30 am"
+      name: Heart of Yoga
+      with: Bruna
+    - time: "9:30 am"
+      name: Heart of Yoga
+      with: Bruna
+
+- day: Saturday
+  classes:
+    - time: "9:00 am"
+      name: Myofascial Pilates
+      with: Emily

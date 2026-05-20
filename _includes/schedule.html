@@ -1,0 +1,19 @@
+<div class="schedule-weekly">
+  {% for day in site.data.schedule %}
+  <div class="schedule__day-group">
+    <h3 class="schedule__day">{{ day.day }}</h3>
+    <ul class="events">
+      {% for class in day.classes %}
+      <li class="event">
+        <span class="event__time">{{ class.time }}</span>
+        <div class="event__body">
+          <span class="event__name">{{ class.name }}</span>
+          <span class="event__with">with {{ class.with }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+  <p class="schedule__note">* BYO mat encouraged</p>
+</div>
