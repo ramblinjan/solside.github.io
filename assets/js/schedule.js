@@ -261,21 +261,25 @@ function update() {
   renderMonthlyPrint(currentWeekStart);
 }
 
+// ── View toggle ─────────────────────────────────────────────────────────────
+
+let currentView = 'weekly';
+
+function switchView(view) {
+  currentView = view;
+  document.getElementById('view-weekly-btn').classList.toggle('view-toggle__btn--active', view === 'weekly');
+  document.getElementById('view-monthly-btn').classList.toggle('view-toggle__btn--active', view === 'monthly');
+  document.getElementById('schedule-output').classList.toggle('schedule--hidden', view === 'monthly');
+  document.querySelector('.week-nav').classList.toggle('schedule--hidden', view === 'monthly');
+  document.getElementById('schedule-monthly-print').classList.toggle('schedule--hidden', view === 'weekly');
+}
+
+document.getElementById('view-weekly-btn').addEventListener('click', () => switchView('weekly'));
+document.getElementById('view-monthly-btn').addEventListener('click', () => switchView('monthly'));
+
 // ── Print ───────────────────────────────────────────────────────────────────
 
-document.getElementById('print-monthly-btn').addEventListener('click', () => {
-  document.body.dataset.printMode = 'monthly';
-  window.print();
-});
-
-document.getElementById('print-weekly-btn').addEventListener('click', () => {
-  document.body.dataset.printMode = 'weekly';
-  window.print();
-});
-
-window.addEventListener('afterprint', () => {
-  delete document.body.dataset.printMode;
-});
+document.getElementById('print-btn').addEventListener('click', () => window.print());
 
 // ── Init ────────────────────────────────────────────────────────────────────
 

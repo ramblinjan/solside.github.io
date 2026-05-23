@@ -598,11 +598,43 @@ footer {
   color: var(--gold);
 }
 
-/* ─── Monthly print view (screen: hidden) ─────────────── */
+/* ─── View toggle ────────────────────────────────────── */
 
-.schedule-monthly-print {
-  display: none;
+.view-toggle {
+  display: flex;
+  gap: 0;
 }
+
+.view-toggle__btn {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.view-toggle__btn:first-child { border-right: none; }
+
+.view-toggle__btn--active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+
+.view-toggle__btn:not(.view-toggle__btn--active):hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.schedule--hidden { display: none !important; }
+
+/* ─── Monthly view ───────────────────────────────────── */
 
 .schedule-monthly-print__label {
   font-family: 'Jost', sans-serif;
@@ -741,6 +773,7 @@ footer {
 
   /* Swap print controls for placeholder box */
   .print-controls { display: none !important; }
+  .print-btn { display: none !important; }
 
   /* QR code — keep full size, no link decoration */
   .qr-code { width: 64px; height: 64px; }
@@ -757,22 +790,12 @@ footer {
     -webkit-print-color-adjust: exact;
   }
 
-  /* Default / print-weekly: show week view */
-  #schedule-output { display: block; }
-  .schedule-monthly-print { display: none !important; }
+  /* Print whatever view is currently active */
+  .schedule--hidden { display: none !important; }
+  #schedule-output:not(.schedule--hidden) { display: block; }
+  .schedule-monthly-print:not(.schedule--hidden) { display: block; }
 
-  body[data-print-mode="weekly"] #schedule-output { display: block; }
-  body[data-print-mode="weekly"] .schedule-monthly-print { display: none !important; }
-
-  /* print-monthly: swap views */
-  body[data-print-mode="monthly"] #schedule-output { display: none !important; }
-  body[data-print-mode="monthly"] .schedule-monthly-print { display: block !important; }
-  body[data-print-mode="monthly"] .schedule-monthly-print__label {
-    display: none;
-  }
-
-  body[data-print-mode="monthly"] .event__desc,
-  body[data-print-mode="monthly"] .event__badge { display: none; }
+  .view-toggle { display: none; }
 }
 
 /* ─── Mobile ──────────────────────────────────────────── */
