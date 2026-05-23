@@ -711,8 +711,8 @@ footer {
   }
 
   .event__time { font-size: 0.66rem; }
-  .event__badge { font-size: 0.55rem; min-width: unset; }
-  .event__badge--time { min-width: unset; width: auto; }
+  .event__badge { font-size: 0.55rem; width: 3rem; text-align: center; display: inline-block; box-sizing: border-box; }
+  .event__badge--time { min-width: unset; width: 3rem; }
   .event__name { font-size: 0.76rem; }
   .event__with { font-size: 0.66rem; }
   .event__desc { font-size: 0.62rem; margin-top: 0.1rem; }
