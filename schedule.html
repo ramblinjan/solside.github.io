@@ -1,21 +1,66 @@
 ---
 layout: default
-title: the sol side — june schedule
+title: the sol side — schedule
 description: Weekly class schedule at the sol side in Swannanoa, NC.
 ---
+
+<script>
+const INSTRUCTORS_ARR = {{ site.data.instructors | jsonify }};
+const RECURRING      = {{ site.data.recurring   | jsonify }};
+const WORKSHOPS      = {{ site.data.workshops   | jsonify }};
+</script>
 
 <div class="page">
 
   <!-- ── Hero ─────────────────────────────────────────── -->
-  <section class="hero">
-    <span class="hero__soft">June 2026</span>
-    <h1 class="hero__title">Schedule</h1>
-    <div class="rule rule--wide" style="margin-top: 2rem;"></div>
+  <section class="hero hero--slim">
+    <div class="hero__row">
+      <div class="print-controls-wrapper">
+        <div class="print-controls">
+          <button class="print-btn" id="print-monthly-btn">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+            Monthly Poster
+          </button>
+          <button class="print-btn" id="print-weekly-btn">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+            Weekly Poster
+          </button>
+        </div>
+        <div class="print-placeholder" aria-hidden="true">
+          visit thesolside.com<br />
+          and/or come to see us<br />
+        </div>
+      </div>
+      <h1 class="hero__title" id="week-month-label">Schedule</h1>
+      <div class="hero__row-end">
+        <a id="qr-link" href="/schedule" tabindex="-1" aria-hidden="true">
+          <img id="qr-code" class="qr-code"
+            src=""
+            alt="QR code — thesolside.com/schedule"
+            width="64" height="64">
+        </a>
+      </div>
+    </div>
+    <div class="rule rule--wide" style="margin-top: 1.2rem;"></div>
   </section>
 
   <!-- ── Schedule ──────────────────────────────────────── -->
   <section class="schedule">
-    {% include schedule.html %}
+
+    <div class="week-nav">
+      <button class="week-nav__btn" id="prev-week" aria-label="Previous week">&#8592;</button>
+      <span class="week-nav__range" id="week-range"></span>
+      <button class="week-nav__btn" id="next-week" aria-label="Next week">&#8594;</button>
+    </div>
+
+    <!-- Week view (JS-rendered) -->
+    <div id="schedule-output" class="schedule-weekly"></div>
+
+    <!-- Monthly pattern view — hidden on screen, revealed in print-monthly mode -->
+    <div id="schedule-monthly-print" class="schedule-weekly schedule-monthly-print" aria-hidden="true">
+      <p class="schedule-monthly-print__label" id="monthly-print-month"></p>
+    </div>
+
   </section>
 
   <!-- ── Info ─────────────────────────────────────────── -->
@@ -32,17 +77,19 @@ description: Weekly class schedule at the sol side in Swannanoa, NC.
         target="_blank"
         rel="noopener noreferrer"
         class="flyer-card__address"
-      >113 Alexander Pl<br>Swannanoa, NC</a>
+      >113 Alexander Pl, Swannanoa, NC</a>
       <p class="flyer-card__landmark">same block as Short Sleeves, Blunt Pretzels &amp; Town Hardware</p>
 
       <div class="rule"></div>
 
       <p class="flyer-card__label">Get in touch</p>
       <div class="flyer-card__contacts">
-        <a href="tel:4844723626" class="flyer-card__link">484-472-3626</a>
+        <a href="mailto:thesolside@gmail.com" class="flyer-card__link">thesolside@gmail.com</a>
         <a href="http://Emily-Smith.com" target="_blank" rel="noopener noreferrer" class="flyer-card__link flyer-card__link--site">Emily-Smith.com</a>
       </div>
     </div>
   </section>
 
 </div>
+
+<script src="/assets/js/schedule.js"></script>
