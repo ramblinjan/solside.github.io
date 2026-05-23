@@ -1,7 +1,7 @@
 ---
 layout: default
 title: the sol side — schedule
-description: Weekly class schedule at the sol side in Swannanoa, NC.
+description: Monthly class schedule at the sol side in Swannanoa, NC.
 ---
 
 <script>
@@ -16,10 +16,6 @@ const WORKSHOPS      = {{ site.data.workshops   | jsonify }};
   <section class="hero hero--slim">
     <div class="hero__row">
       <div class="print-controls-wrapper">
-        <div class="view-toggle">
-          <button class="view-toggle__btn view-toggle__btn--active" id="view-weekly-btn">Weekly</button>
-          <button class="view-toggle__btn" id="view-monthly-btn">Monthly</button>
-        </div>
         <button class="print-btn" id="print-btn">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
           Print
@@ -44,21 +40,7 @@ const WORKSHOPS      = {{ site.data.workshops   | jsonify }};
 
   <!-- ── Schedule ──────────────────────────────────────── -->
   <section class="schedule">
-
-    <div class="week-nav">
-      <button class="week-nav__btn" id="prev-week" aria-label="Previous week">&#8592;</button>
-      <span class="week-nav__range" id="week-range"></span>
-      <button class="week-nav__btn" id="next-week" aria-label="Next week">&#8594;</button>
-    </div>
-
-    <!-- Week view (JS-rendered) -->
     <div id="schedule-output" class="schedule-weekly"></div>
-
-    <!-- Monthly pattern view — hidden on screen, revealed in print-monthly mode -->
-    <div id="schedule-monthly-print" class="schedule-weekly schedule-monthly-print schedule--hidden" aria-hidden="true">
-      <p class="schedule-monthly-print__label" id="monthly-print-month"></p>
-    </div>
-
   </section>
 
   <!-- ── Info ─────────────────────────────────────────── -->

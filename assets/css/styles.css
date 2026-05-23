@@ -89,6 +89,8 @@ section {
   padding: 0.25rem 2rem;
 }
 
+.navbar__logo-link { display: block; line-height: 0; }
+
 .navbar__logo {
   height: 44px;
   width: auto;
@@ -540,16 +542,28 @@ footer {
 
 .event__badge {
   font-family: 'Jost', sans-serif;
-  font-size: 0.58rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid var(--rule);
-  padding: 0.1rem 0.4rem;
+  color: var(--bg);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 0.15rem 0.5rem;
   margin-right: 0.4rem;
   vertical-align: middle;
   white-space: nowrap;
+}
+
+.event__badge--time {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: none;
+  border-color: var(--rule);
+  display: inline-block;
+  min-width: 4.8rem;
+  text-align: center;
 }
 
 .event__time:empty { display: none; }
@@ -597,42 +611,6 @@ footer {
   border-color: var(--gold);
   color: var(--gold);
 }
-
-/* ─── View toggle ────────────────────────────────────── */
-
-.view-toggle {
-  display: flex;
-  gap: 0;
-}
-
-.view-toggle__btn {
-  background: none;
-  border: 1px solid var(--rule);
-  color: var(--muted);
-  font-family: 'Jost', sans-serif;
-  font-size: 0.58rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 0.35rem 0.7rem;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
-}
-
-.view-toggle__btn:first-child { border-right: none; }
-
-.view-toggle__btn--active {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: var(--bg);
-}
-
-.view-toggle__btn:not(.view-toggle__btn--active):hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-.schedule--hidden { display: none !important; }
 
 /* ─── Monthly view ───────────────────────────────────── */
 
@@ -726,18 +704,19 @@ footer {
   .schedule__day-group:first-child .schedule__day { padding-top: 0; }
 
   .event {
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: auto 1fr;
     gap: 0 0.6rem;
     padding: 0.12rem 0;
+    align-items: start;
   }
 
   .event__time { font-size: 0.66rem; }
+  .event__badge { font-size: 0.55rem; min-width: unset; }
+  .event__badge--time { min-width: unset; width: auto; }
   .event__name { font-size: 0.76rem; }
   .event__with { font-size: 0.66rem; }
   .event__desc { font-size: 0.62rem; margin-top: 0.1rem; }
   .event__badge { font-size: 0.44rem; padding: 0.04rem 0.25rem; }
-
-  .schedule-monthly-print__label { font-size: 0.5rem; margin-bottom: 0.4rem; }
 
   .info { padding: 0; }
 
@@ -790,12 +769,7 @@ footer {
     -webkit-print-color-adjust: exact;
   }
 
-  /* Print whatever view is currently active */
-  .schedule--hidden { display: none !important; }
-  #schedule-output:not(.schedule--hidden) { display: block; }
-  .schedule-monthly-print:not(.schedule--hidden) { display: block; }
-
-  .view-toggle { display: none; }
+  #schedule-output { display: block; }
 }
 
 /* ─── Mobile ──────────────────────────────────────────── */
