@@ -30,7 +30,7 @@
     - time: "1:00 pm"
       name: Rocking and Rolling Your Joints for Longevity
       with: Emily Smith
-    - time: "6:15 pm"
+    - time: "6:00 pm"
       name: Restorative and Yoga Nidra
       with: Bruna
     - time: "7:30 pm"
@@ -48,6 +48,6 @@
 
 - day: Saturday
   classes:
-    - time: "9:00 am"
+    - time: "12:00 pm"
       name: Myofascial Pilates
       with: Emily Smith
