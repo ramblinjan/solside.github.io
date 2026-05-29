@@ -394,8 +394,8 @@ section {
     padding-left: 1.5rem;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 0.80rem;
-    color: var(--muted);
+    font-size: 0.82rem;
+    color: #4a4642;
     white-space: nowrap;
   }
 }
@@ -798,8 +798,8 @@ footer {
   .rule--wide { width: 60px; }
 
   .schedule__day {
-    font-size: 0.5rem;
-    padding: 0.4rem 0 0;
+    font-size: 0.54rem;
+    padding: 0.3rem 0 0;
     letter-spacing: 0.2em;
   }
 
@@ -808,17 +808,17 @@ footer {
   .event {
     grid-template-columns: auto 1fr;
     gap: 0 0.6rem;
-    padding: 0.12rem 0;
+    padding: 0.08rem 0;
     align-items: start;
   }
 
-  .event__time { font-size: 0.66rem; }
-  .event__badge { font-size: 0.55rem; width: 3rem; text-align: center; display: inline-block; box-sizing: border-box; }
+  .event__time { font-size: 0.70rem; }
+  .event__badge { font-size: 0.58rem; width: 3rem; text-align: center; display: inline-block; box-sizing: border-box; }
   .event__badge--time { min-width: unset; width: 3rem; }
-  .event__name { font-size: 0.84rem; }
-  .event__with { font-size: 0.74rem; }
-  .event__desc { font-size: 0.62rem; margin-top: 0.1rem; }
-  .event__badge { font-size: 0.44rem; padding: 0.04rem 0.25rem; }
+  .event__name { font-size: 0.88rem; font-weight: 500; color: #1e1b18; }
+  .event__with { font-size: 0.77rem; color: #4a4642; }
+  .event__desc { font-size: 0.64rem; margin-top: 0.1rem; }
+  .event__badge { font-size: 0.46rem; padding: 0.04rem 0.25rem; }
 
   .info { padding: 0; }
 
