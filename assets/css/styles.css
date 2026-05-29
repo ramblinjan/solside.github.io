@@ -314,6 +314,93 @@ section {
   line-height: 1.3;
 }
 
+.event__link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.event__link:hover {
+  text-decoration-color: var(--ink);
+}
+
+/* Tooltip on event name */
+.event__name[data-tooltip] {
+  position: relative;
+  cursor: default;
+}
+.event__name[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);
+  width: 280px;
+  max-width: 90vw;
+  padding: 0.55rem 0.75rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.5;
+  white-space: normal;
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+.event__name[data-tooltip]:hover::after,
+.event__name[data-tooltip]:focus-within::after {
+  opacity: 1;
+}
+
+.event__info {
+  font-size: 0.82rem;
+  color: var(--gold);
+  font-weight: 700;
+  margin-left: 0.3em;
+  vertical-align: middle;
+  cursor: default;
+  user-select: none;
+}
+
+.event__icon-cal {
+  color: var(--gold);
+  margin-left: 0.3em;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.event__tagline {
+  display: none;
+}
+
+@media print {
+  .event__name[data-tooltip]::after { display: none; }
+  .event__info { display: none; }
+  .event__icon-cal { display: none; }
+  .event__link { text-decoration: none; color: inherit; }
+
+  .event__body {
+    display: flex;
+    align-items: baseline;
+  }
+  .event__tagline {
+    display: inline;
+    margin-left: auto;
+    padding-left: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.80rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+}
+
+
 .event__with {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
@@ -339,12 +426,27 @@ section {
   z-index: 1;
 }
 
-/* ─── Upcoming strip (home page) ─────────────────────── */
+/* ─── Schedule (home page) ───────────────────────────── */
+
+.upcoming__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.upcoming__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
 
 .upcoming {
   padding-top: 0;
   padding-bottom: 3rem;
-  text-align: center;
 }
 
 .upcoming__footer {
@@ -713,8 +815,8 @@ footer {
   .event__time { font-size: 0.66rem; }
   .event__badge { font-size: 0.55rem; width: 3rem; text-align: center; display: inline-block; box-sizing: border-box; }
   .event__badge--time { min-width: unset; width: 3rem; }
-  .event__name { font-size: 0.76rem; }
-  .event__with { font-size: 0.66rem; }
+  .event__name { font-size: 0.84rem; }
+  .event__with { font-size: 0.74rem; }
   .event__desc { font-size: 0.62rem; margin-top: 0.1rem; }
   .event__badge { font-size: 0.44rem; padding: 0.04rem 0.25rem; }
 

@@ -11,4 +11,6 @@ exclude:
   - juneschedule.md
   - services.md
   - people/
+  - forms/
+  - ROADMAP.md
   - "*.pdf"
