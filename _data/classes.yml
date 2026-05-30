@@ -5,7 +5,7 @@
   short_description: "Soft-style internal kung fu — ancient teachings meet modern neuroscience."
   description: "Internal, Soft-Style Kung Fu for all skill levels. By incorporating ancient teachings with modern lessons in neuroscience, in this limited series we will explore what it means to be a beginner. We will build a foundation of Kung Fu conditioning -- both physical and mental -- and learn how to protect the most precious gift we have: a beginner's perspective."
   url: "https://calendar.app.google/1DSVTcpNjZ3oMbmJ7"
-
+  
 - id: hatha-yoga
   title: Hatha Yoga
   instructor_id: bruna
@@ -30,20 +30,31 @@
   description: "Restorative & Yoga Nidra classes are a slower pace practice, inviting the students to stay in an asana (Yoga posture) for 2 to 3 minutes, slowing their breath rhythm and using props to aid relaxation, stretch and restauration of tissues. Yoga Nidra is a guided meditation practice in which the mind state is in between wakefulness and sleep, inducing the activation of the parasympathetic nervous system, responsible for rest and digest functions and regulation of hormones that promote the sense of safety and availability for connection."
   url: "https://calendar.app.google/da2Sbrmkg9JGJiwq9"
 
+- id: qigong-flow
+  title: Qigong Flow
+  instructor_id: emily-smith
+  duration_min: 60
+  description: "Movement changes energy. Energy changes movement. Cultivate well-being and awareness. Qi is energy, the life force flowing through all nature. Gong means skill acquired through practice. The practice of Qigong cultivates a natural flow of Qi connecting our internal landscape with to the universe's."
+  short_description: "Movement changes energy. Energy changes movement."
+
 - id: rocking-rolling-joints
   title: Rocking and Rolling Your Joints for Longevity
   instructor_id: emily-smith
   duration_min: 60
-  short_description: "Gentle mobility practice to keep your joints moving freely for life."
+  description: "A balanced pelvis is the foundation for healthy alignment and comfortable, free movement in all your joints. Learn a simple blend of mindful movement and gentle myofascial release that you can easily repeat at home. Soften tension, build functional strength, and help prevent stress, imbalance, and pain. Leave feeling more aligned, mobile, and at ease in our bodies."
+  short_description: "Gentle mobility practice to keep your joints moving freely."
 
-- id: myofascial-pilates
-  title: Myofascial Pilates
+- id: evolving-pilates
+  title: Evolving Pilates
   instructor_id: emily-smith
   duration_min: 60
-  short_description: "Core strength and myofascial release for lasting, whole-body balance."
+  description: "Strengthen your core and balance your posture using the principles of Joseph Pilates's original matwork adapted for modern times."
+  short_description: "Strengthen your core and balance your posture using modern Pilates."
 
-- id: qigong-myofascial-meditation
-  title: Qigong / Myofascial Meditation
+- id: myofascial-meditation
+  title: Myofascial Meditation
   instructor_id: emily-smith
   duration_min: 60
-  short_description: "Moving meditation weaving breath, qi, and myofascial awareness."
+  descrpition: "Learn a meditative myofascial self-treatment practice you can repeat on your own. Rooted in principles of the John F. Barnes Myofascial Release Approach®, Myofascial Meditation uses props and supported positions instead of restrictive seated meditation. This gentle practice helps your nervous system settle, releases fascial restrictions, eases tension, and supports lasting pain relief."
+  short_description: "Meditive myofascial self-treatment practice to repeat on your own."
+

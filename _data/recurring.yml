@@ -14,27 +14,37 @@
   time: "09:30"
 
 - month: "2026-06"
-  class_id: rocking-rolling-joints
+  class_id: qigong-flow
   day: Tuesday
   time: "13:00"
 
 - month: "2026-06"
-  class_id: myofascial-pilates
+  class_id: rocking-rolling-joints
   day: Wednesday
   time: "12:00"
 
 - month: "2026-06"
-  class_id: qigong-myofascial-meditation
+  class_id: qigong-flow
   day: Wednesday
   time: "17:00"
 
 - month: "2026-06"
-  class_id: myofascial-pilates
+  class_id: evolving-pilates
   day: Wednesday
-  time: "18:15"
+  time: "18:00"
 
 - month: "2026-06"
-  class_id: rocking-rolling-joints
+  class_id: myofascial-meditation
+  day: Wednesday
+  time: "19:00"
+
+- month: "2026-06"
+  class_id: myofascial-meditation
+  day: Thursday
+  time: "12:00"
+  
+- month: "2026-06"
+  class_id: qigong-flow
   day: Thursday
   time: "13:00"
 
@@ -64,6 +74,26 @@
   time: "11:30"
 
 - month: "2026-06"
-  class_id: myofascial-pilates
+  class_id: qigong-flow
+  day: Friday
+  time: "18:00"
+
+- month: "2026-06"
+  class_id: kung-fu-beginners-mind
+  day: Friday
+  time: "19:00"
+
+- month: "2026-06"
+  class_id: myofascial-meditation
+  day: Saturday
+  time: "11:00"
+
+- month: "2026-06"
+  class_id: evolving-pilates
   day: Saturday
   time: "12:00"
+
+- month: "2026-06"
+  class_id: qigong-flow
+  day: Saturday
+  time: "13:00"

@@ -732,7 +732,7 @@ footer {
 @media print {
   @page {
     size: letter portrait;
-    margin: 0.3in 0.5in;
+    margin: 0.15in 0.35in;
   }
 
   body::before {
@@ -796,14 +796,17 @@ footer {
 
   .rule { margin: 0.25rem auto; width: 36px; }
   .rule--wide { width: 60px; }
+  .hero .rule--wide { display: none; }
 
   .schedule__day {
     font-size: 0.54rem;
-    padding: 0.3rem 0 0;
+    padding: 0.1rem 0 0;
     letter-spacing: 0.2em;
+    font-weight: 700;
   }
 
   .schedule__day-group:first-child .schedule__day { padding-top: 0; }
+  .schedule__day-group { margin-bottom: 0.1rem; }
 
   .event {
     grid-template-columns: auto 1fr;
@@ -821,6 +824,7 @@ footer {
   .event__badge { font-size: 0.46rem; padding: 0.04rem 0.25rem; }
 
   .info { padding: 0; }
+  .schedule { padding-bottom: 1rem !important; }
 
   .corner { border-color: var(--gold); }
 
@@ -863,12 +867,12 @@ footer {
   .print-placeholder {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-color: rgba(201, 151, 58, 0.45);
-    font-size: 0.48rem;
-    padding: 0.4rem 0.5rem;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+    border: none;
+    padding: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--ink);
   }
 
   #schedule-output { display: block; }
