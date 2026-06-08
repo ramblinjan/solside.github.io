@@ -1,8 +1,10 @@
-- date: "2026-06-14"
-  time: "16:00"
-  title: The Body Speaks
-  instructor_id: bruna-christopher
-  duration_min: 180
-  short_description: "Monthly somatic immersion — movement, breath, writing & group sharing."
-  description: "The Body Speaks' monthly immersion is an invitation to slow down and listen to what the body is telling us. We will explore building somatic awareness through intentional movements led by our breath rhythm, being with what is and what arises emotionally, physically and mentally. The integration is supported by the group, with moments for writing and sharing your experience."
-  url: "https://calendar.app.google/vX67SK7GbAUrNJEC7"
+# To add a workshop, uncomment and fill in an entry like this:
+# - date: "2026-06-14"
+#   time: "16:00"
+#   title: The Body Speaks
+#   instructor_id: bruna-christopher
+#   duration_min: 180
+#   short_description: "Monthly somatic immersion — movement, breath, writing & group sharing."
+#   description: "The Body Speaks' monthly immersion is an invitation to slow down and listen to what the body is telling us. We will explore building somatic awareness through intentional movements led by our breath rhythm, being with what is and what arises emotionally, physically and mentally. The integration is supported by the group, with moments for writing and sharing your experience."
+#   url: "https://calendar.app.google/vX67SK7GbAUrNJEC7"
+[]
