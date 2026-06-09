@@ -4,16 +4,6 @@
   time: "19:00"
 
 - month: "2026-06"
-  class_id: hatha-yoga
-  day: Tuesday
-  time: "07:30"
-
-- month: "2026-06"
-  class_id: heart-of-yoga
-  day: Tuesday
-  time: "09:30"
-
-- month: "2026-06"
   class_id: qigong-flow
   day: Tuesday
   time: "13:00"
@@ -49,11 +39,6 @@
   time: "13:00"
 
 - month: "2026-06"
-  class_id: heart-of-yoga
-  day: Thursday
-  time: "16:30"
-
-- month: "2026-06"
   class_id: restorative-yoga-nidra
   day: Thursday
   time: "18:00"
@@ -61,17 +46,7 @@
 - month: "2026-06"
   class_id: heart-of-yoga
   day: Friday
-  time: "07:30"
-
-- month: "2026-06"
-  class_id: hatha-yoga
-  day: Friday
-  time: "09:30"
-
-- month: "2026-06"
-  class_id: restorative-yoga-nidra
-  day: Friday
-  time: "11:30"
+  time: "09:00"
 
 - month: "2026-06"
   class_id: qigong-flow
