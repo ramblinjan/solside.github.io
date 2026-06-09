@@ -10,7 +10,7 @@
 
 - month: "2026-06"
   class_id: rocking-rolling-joints
-  day: Wednesday
+  day: Tuesday
   time: "12:00"
 
 - month: "2026-06"
@@ -29,14 +29,19 @@
   time: "19:00"
 
 - month: "2026-06"
-  class_id: myofascial-meditation
+  class_id: rocking-rolling-joints
   day: Thursday
   time: "12:00"
+
+- month: "2026-06"
+  class_id: evolving-pilates
+  day: Thursday
+  time: "13:00"
   
 - month: "2026-06"
   class_id: qigong-flow
   day: Thursday
-  time: "13:00"
+  time: "17:00"
 
 - month: "2026-06"
   class_id: restorative-yoga-nidra
@@ -49,17 +54,12 @@
   time: "09:00"
 
 - month: "2026-06"
-  class_id: qigong-flow
-  day: Friday
-  time: "18:00"
-
-- month: "2026-06"
   class_id: kung-fu-beginners-mind
   day: Friday
   time: "19:00"
 
 - month: "2026-06"
-  class_id: myofascial-meditation
+  class_id: rocking-rolling-joints
   day: Saturday
   time: "11:00"
 
@@ -68,7 +68,3 @@
   day: Saturday
   time: "12:00"
 
-- month: "2026-06"
-  class_id: qigong-flow
-  day: Saturday
-  time: "13:00"
