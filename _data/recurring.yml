@@ -1,9 +1,4 @@
 - month: "2026-06"
-  class_id: kung-fu-beginners-mind
-  day: Monday
-  time: "19:00"
-
-- month: "2026-06"
   class_id: qigong-flow
   day: Tuesday
   time: "13:00"
@@ -52,11 +47,6 @@
   class_id: heart-of-yoga
   day: Friday
   time: "09:00"
-
-- month: "2026-06"
-  class_id: kung-fu-beginners-mind
-  day: Friday
-  time: "19:00"
 
 - month: "2026-06"
   class_id: rocking-rolling-joints
