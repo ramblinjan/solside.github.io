@@ -1,60 +1,36 @@
-- month: "2026-06"
-  class_id: qigong-flow
+- month: "2026-07"
+  class_id: heart-of-tantra-yoga
   day: Tuesday
-  time: "13:00"
-
-- month: "2026-06"
-  class_id: rocking-rolling-joints
-  day: Tuesday
-  time: "12:00"
-
-- month: "2026-06"
-  class_id: qigong-flow
-  day: Wednesday
   time: "17:00"
 
-- month: "2026-06"
+- month: "2026-07"
   class_id: evolving-pilates
   day: Wednesday
-  time: "18:00"
+  time: "10:00"
+  audience: "All ages welcome"
 
-- month: "2026-06"
-  class_id: myofascial-meditation
-  day: Wednesday
-  time: "19:00"
-
-- month: "2026-06"
-  class_id: rocking-rolling-joints
-  day: Thursday
-  time: "12:00"
-
-- month: "2026-06"
-  class_id: evolving-pilates
-  day: Thursday
-  time: "13:00"
-  
-- month: "2026-06"
+- month: "2026-07"
   class_id: qigong-flow
-  day: Thursday
-  time: "17:00"
-
-- month: "2026-06"
-  class_id: restorative-yoga-nidra
-  day: Thursday
-  time: "18:00"
-
-- month: "2026-06"
-  class_id: heart-of-yoga
-  day: Friday
-  time: "09:00"
-
-- month: "2026-06"
-  class_id: rocking-rolling-joints
-  day: Saturday
+  day: Wednesday
   time: "11:00"
 
-- month: "2026-06"
+- month: "2026-07"
+  class_id: myofascial-release-movement
+  day: Thursday
+  time: "17:00"
+
+- month: "2026-07"
+  class_id: evolving-pilates
+  day: Thursday
+  time: "18:00"
+
+- month: "2026-07"
+  class_id: heart-of-tantra-yoga
+  day: Friday
+  time: "07:30"
+
+- month: "2026-07"
   class_id: evolving-pilates
   day: Saturday
   time: "12:00"
-
+  audience: "All ages welcome"

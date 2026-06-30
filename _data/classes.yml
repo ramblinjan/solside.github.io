@@ -22,8 +22,17 @@
   description: "Heart of Yoga classes are an invitation to being with exactly how we are in the moment. Movements are breath-led and the sequence is just a guide, accessible to all body types and ages. Another intention for this practice is allowing students to create their own practice and a new type of intimacy with themselves."
   url: "https://calendar.app.google/P3DnDWagN9mRW8d28"
 
+- id: heart-of-tantra-yoga
+  title: Heart of Tantra Yoga
+  instructor_id: bruna
+  duration_min: 75
+  short_description: "Breath, energy & presence — a tantra-informed practice of meeting yourself exactly as you are."
+  description: "Heart of Tantra Yoga weaves breath, subtle energy, and embodied presence into a slow, devotional practice. Movement is breath-led and the sequence is a guide rather than a goal — an invitation to soften, feel, and meet yourself with intimacy and care. Open to all bodies and levels."
+  register_phone: "828-579-6528"
+  register_email: "brunnabelfiore96@gmail.com"
+
 - id: restorative-yoga-nidra
-  title: Restorative & Yoga Nidra (NO CLASS JUNE 11)
+  title: Restorative & Yoga Nidra
   instructor_id: bruna
   duration_min: 60
   short_description: "Slow supported postures & guided deep rest for the nervous system."
@@ -31,7 +40,7 @@
   url: "https://calendar.app.google/da2Sbrmkg9JGJiwq9"
 
 - id: qigong-flow
-  title: Qigong Flow
+  title: Qigong
   instructor_id: emily-smith
   duration_min: 60
   description: "Movement changes energy. Energy changes movement. Cultivate well-being and awareness. Qi is energy, the life force flowing through all nature. Gong means skill acquired through practice. The practice of Qigong cultivates a natural flow of Qi connecting our internal landscape with to the universe's."
@@ -60,5 +69,13 @@
   duration_min: 60
   descrpition: "Learn a meditative myofascial self-treatment practice you can repeat on your own. Rooted in principles of the John F. Barnes Myofascial Release Approach®, Myofascial Meditation uses props and supported positions instead of restrictive seated meditation. This gentle practice helps your nervous system settle, releases fascial restrictions, eases tension, and supports lasting pain relief."
   short_description: "Meditive myofascial self-treatment practice to repeat on your own."
+  url: "https://solbody.as.me/"
+
+- id: myofascial-release-movement
+  title: Myofascial Release & Movement
+  instructor_id: emily-smith
+  duration_min: 60
+  description: "A gentle blend of myofascial self-release and mindful movement. Using props and supported positions rooted in the John F. Barnes Myofascial Release Approach®, we soften fascial restrictions and then carry that ease into simple, functional movement. Leave feeling more open, mobile, and at home in your body."
+  short_description: "Release fascial tension and move with ease — self-treatment meets mindful movement."
   url: "https://solbody.as.me/"
 

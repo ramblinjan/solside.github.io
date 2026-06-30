@@ -1,10 +1,39 @@
-# To add a workshop, uncomment and fill in an entry like this:
-# - date: "2026-06-14"
-#   time: "16:00"
-#   title: The Body Speaks
-#   instructor_id: bruna-christopher
-#   duration_min: 180
-#   short_description: "Monthly somatic immersion — movement, breath, writing & group sharing."
-#   description: "The Body Speaks' monthly immersion is an invitation to slow down and listen to what the body is telling us. We will explore building somatic awareness through intentional movements led by our breath rhythm, being with what is and what arises emotionally, physically and mentally. The integration is supported by the group, with moments for writing and sharing your experience."
-#   url: "https://calendar.app.google/vX67SK7GbAUrNJEC7"
-[]
+# Special events / one-off workshops. Fields: date, time, duration_min (optional,
+# enables a time range), title, instructor_id (optional), short_description,
+# description, url (booking link, optional), audience (optional), price (optional).
+
+- date: "2026-07-04"
+  time: "14:00"
+  title: "Dark City DJs Potluck Barbecue & Open House"
+  audience: "Everyone welcome"
+  short_description: "A community potluck barbecue and open house with the Dark City DJs."
+
+- date: "2026-07-11"
+  time: "13:00"
+  title: "Kitchen Witch Series · Garden Fresh Smoothies"
+  audience: "All ages welcome"
+  price: "Suggested donation $15"
+  short_description: "Includes a smoothie tasting."
+
+- date: "2026-07-11"
+  time: "16:00"
+  duration_min: 90
+  title: "Myofascial Movement, Meditation & Sound Bath"
+  instructor_id: nick-emily
+  price: "Pay what you can · suggested donation $40"
+
+- date: "2026-07-18"
+  time: "18:00"
+  duration_min: 120
+  title: "Kung Fu: Internal Sensing"
+  instructor_id: jan-kung-fu
+  audience: "All skill levels welcome"
+
+- date: "2026-07-25"
+  time: "13:00"
+  title: "Kitchen Witch Series · Juicing"
+
+- date: "2026-07-26"
+  time: "16:00"
+  title: "Family Myofascial Release & Movement"
+  instructor_id: emily-smith
