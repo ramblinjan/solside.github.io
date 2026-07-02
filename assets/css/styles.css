@@ -5,13 +5,13 @@
 }
 
 :root {
-  --gold: #96661c;
+  --gold: #a0611c;
   --gold-light: #c9973a;
-  --gold-faint: rgba(150, 102, 28, 0.12);
+  --gold-faint: rgba(160, 97, 28, 0.12);
   --ink: #2e2a25;
-  --muted: #6b6459;
+  --muted: #6c6151;
   --bg: #fdfaf6;
-  --rule: rgba(150, 102, 28, 0.35);
+  --rule: rgba(160, 97, 28, 0.32);
 }
 
 html {
@@ -96,6 +96,47 @@ section {
   width: auto;
   display: block;
   animation: fadeUp 1.2s ease both;
+}
+
+/* ─── Private session CTA (top of home page) ─────────── */
+
+.private-cta {
+  display: block;
+  text-align: center;
+  padding: 0.7rem 1rem;
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+.private-cta__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-faint);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.private-cta__link:hover {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+}
+
+.private-cta__link::after {
+  content: '→';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 /* ─── Hero ────────────────────────────────────────────── */
@@ -915,6 +956,8 @@ footer {
   }
 
   .navbar__logo { height: 28px; }
+
+  .private-cta { display: none !important; }
 
   body {
     background: white;
