@@ -5,13 +5,13 @@
 }
 
 :root {
-  --gold: #C9973A;
-  --gold-light: #e0b96a;
-  --gold-faint: rgba(201, 151, 58, 0.12);
+  --gold: #96661c;
+  --gold-light: #c9973a;
+  --gold-faint: rgba(150, 102, 28, 0.12);
   --ink: #2e2a25;
-  --muted: #7a7368;
+  --muted: #6b6459;
   --bg: #fdfaf6;
-  --rule: rgba(201, 151, 58, 0.3);
+  --rule: rgba(150, 102, 28, 0.35);
 }
 
 html {
