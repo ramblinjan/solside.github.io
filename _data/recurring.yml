@@ -7,7 +7,6 @@
   class_id: evolving-pilates
   day: Wednesday
   time: "10:00"
-  audience: "All ages welcome"
 
 - month: "2026-07"
   class_id: qigong-flow
@@ -33,4 +32,3 @@
   class_id: evolving-pilates
   day: Saturday
   time: "12:00"
-  audience: "All ages welcome"

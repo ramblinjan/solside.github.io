@@ -71,7 +71,7 @@ function metaLine(audience, price) {
 
 function registerLine(phone, email) {
   return `
-            <div class="event__register">Pre-register${
+            <div class="event__register"><strong class="event__register-label">No Drop-Ins, Preregister Only</strong>${
               phone ? ` · <a href="tel:+1${phone.replace(/\D/g, '')}">${phone}</a>` : ''
             }${
               email ? ` · <a href="mailto:${email}">email</a>` : ''

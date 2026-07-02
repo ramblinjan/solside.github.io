@@ -10,10 +10,9 @@
 
 - date: "2026-07-11"
   time: "13:00"
-  title: "Kitchen Witch Series · Garden Fresh Smoothies"
+  title: "Kitchen Witch Series · Garden Fresh Smoothie Class & Complimentary Smoothie Tasting"
   audience: "All ages welcome"
   price: "Suggested donation $15"
-  short_description: "Includes a smoothie tasting."
 
 - date: "2026-07-11"
   time: "16:00"
@@ -27,7 +26,7 @@
   duration_min: 120
   title: "Kung Fu: Internal Sensing"
   instructor_id: jan-kung-fu
-  audience: "All skill levels welcome"
+  audience: "All ages, all levels welcome"
 
 - date: "2026-07-25"
   time: "13:00"
@@ -37,3 +36,4 @@
   time: "16:00"
   title: "Family Myofascial Release & Movement"
   instructor_id: emily-smith
+  audience: "All ages, all levels welcome"

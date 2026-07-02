@@ -458,6 +458,10 @@ section {
   color: var(--muted);
   margin-top: 0.25rem;
 }
+.event__register-label {
+  font-weight: 600;
+  color: var(--ink);
+}
 .event__register a {
   color: var(--gold);
   text-decoration: underline;
