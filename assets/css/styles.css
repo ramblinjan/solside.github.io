@@ -103,9 +103,15 @@ section {
 .private-cta {
   display: block;
   text-align: center;
-  padding: 0.7rem 1rem;
+  padding: 5.5rem 1rem 0.7rem;
   margin: 0 auto;
   max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+
+.private-cta + .hero {
+  padding-top: 1.75rem;
 }
 
 .private-cta__link {
