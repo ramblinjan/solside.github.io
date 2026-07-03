@@ -70,11 +70,13 @@ function metaLine(audience, price) {
 }
 
 function registerLine(phone, email) {
+  const contacts = [
+    phone ? `<a href="tel:+1${phone.replace(/\D/g, '')}">${phone}</a>` : '',
+    email ? `<a href="mailto:${email}">${email}</a>` : '',
+  ].filter(Boolean).join(' · ');
   return `
             <div class="event__register"><strong class="event__register-label">No Drop-Ins, Preregister Only</strong>${
-              phone ? ` · <a href="tel:+1${phone.replace(/\D/g, '')}">${phone}</a>` : ''
-            }${
-              email ? ` · <a href="mailto:${email}">email</a>` : ''
+              contacts ? `<br>${contacts}` : ''
             }</div>`;
 }
 
