@@ -1,7 +1,6 @@
 # Special events / one-off workshops. Fields: date, time, duration_min (optional,
 # enables a time range), title, instructor_id (optional), short_description,
 # description, url (booking link, optional), audience (optional), price (optional).
-#
 
 - date: "2026-07-04"
   time: "14:00"
