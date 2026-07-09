@@ -10,13 +10,6 @@
   short_description: "A community potluck barbecue and open house with the Dark City DJs."
 
 - date: "2026-07-11"
-  time: "13:00"
-  title: "Kitchen Witch Series · Garden Fresh Smoothie Class & Complimentary Smoothie Tasting"
-  audience: "Everyone welcome"
-  price: "Suggested donation $15"
-  url: "https://solbody.as.me/schedule/e12d02d4"
-
-- date: "2026-07-11"
   time: "16:00"
   duration_min: 90
   title: "Myofascial Movement, Meditation & Sound Bath"
@@ -28,6 +21,13 @@
 - date: "2026-07-25"
   time: "13:00"
   title: "Kitchen Witch Series · Garden Fresh Juicing Class & Complimentary Juice Tasting"
+  audience: "Everyone welcome"
+  price: "Suggested donation $15"
+  url: "https://solbody.as.me/schedule/e12d02d4"
+
+- date: "2026-07-26"
+  time: "15:00"
+  title: "Kitchen Witch Series · Garden Fresh Smoothie Class & Complimentary Smoothie Tasting"
   audience: "Everyone welcome"
   price: "Suggested donation $15"
   url: "https://solbody.as.me/schedule/e12d02d4"
