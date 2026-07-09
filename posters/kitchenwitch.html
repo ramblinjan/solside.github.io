@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kitchen Witch Series — the sol side</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --gold: #a0611c;
+    --gold-light: #c9973a;
+    --ink: #2e2a25;
+    --bg: #fdfaf6;
+    --sage: #6f7d5c;
+    --berry: #9c4a52;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #e9e2d6;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    font-family: 'Caveat', cursive;
+    color: var(--ink);
+  }
+
+  .poster {
+    position: relative;
+    width: 816px;   /* 8.5in @96dpi */
+    height: 1056px; /* 11in  @96dpi */
+    background: var(--bg);
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(46, 42, 37, 0.25);
+  }
+
+  /* subtle paper grain */
+  .poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(201, 151, 58, 0.06), transparent 55%),
+      radial-gradient(ellipse at 85% 80%, rgba(111, 125, 92, 0.05), transparent 50%);
+    pointer-events: none;
+  }
+
+  .frame-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .content {
+    position: absolute;
+    inset: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 26px 44px 20px;
+  }
+
+  .logo {
+    width: 132px;
+    height: auto;
+    margin-bottom: 2px;
+    mix-blend-mode: multiply; /* melt any white box into the paper */
+  }
+
+  .presents {
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-top: -6px;
+  }
+
+  .title {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-size: 88px;
+    line-height: 0.95;
+    letter-spacing: 0.045em;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+  .title .accent { color: var(--gold); }
+
+  .tagline {
+    font-size: 31px;
+    font-weight: 400;
+    color: var(--sage);
+    margin-top: 4px;
+  }
+
+  .divider { margin: 14px 0 10px; }
+
+  .events {
+    display: flex;
+    gap: 18px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 6px;
+  }
+
+  .event {
+    flex: 1;
+    max-width: 336px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event .doodle { margin-bottom: 6px; }
+
+  .event-when {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-size: 38px;
+    letter-spacing: 0.06em;
+    color: var(--berry);
+    white-space: nowrap;
+  }
+
+  .event-name {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+
+  .event-sub {
+    font-size: 25px;
+    font-weight: 400;
+    color: var(--gold);
+    margin-top: 3px;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  .footer-note {
+    font-size: 33px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 14px;
+  }
+  .footer-note .sep { color: var(--gold-light); padding: 0 8px; font-weight: 400; }
+
+  .learn {
+    font-size: 27px;
+    color: var(--sage);
+    margin-top: 2px;
+  }
+
+  .where {
+    margin-top: auto;
+    padding-bottom: 8px;
+    font-size: 26px;
+    line-height: 1.22;
+    color: var(--ink);
+  }
+  .where .site {
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+  }
+
+  @media print {
+    @page { size: letter portrait; margin: 0; }
+    body { background: none; padding: 0; }
+    .poster {
+      width: 8.5in;
+      height: 11in;
+      box-shadow: none;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- Hand-drawn wobbly frame + corner sprigs + scattered twinkles -->
+  <svg class="frame-svg" viewBox="0 0 816 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- outer wobbly border -->
+    <path d="M34 40 C 210 33, 400 45, 606 37 C 700 34, 760 40, 780 38
+             C 776 210, 784 420, 778 620 C 774 800, 782 950, 779 1017
+             C 600 1022, 420 1012, 240 1019 C 140 1023, 70 1016, 36 1019
+             C 40 860, 32 660, 38 470 C 42 300, 33 130, 34 40 Z"
+          stroke="#a0611c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    <!-- inner wobbly border -->
+    <path d="M52 58 C 220 52, 410 62, 600 55 C 690 52, 745 58, 762 56
+             C 758 220, 766 430, 760 620 C 757 790, 764 940, 761 999
+             C 590 1004, 420 995, 250 1001 C 155 1005, 85 999, 54 1001
+             C 58 850, 50 660, 56 480 C 60 310, 51 140, 52 58 Z"
+          stroke="#c9973a" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="1 7" opacity="0.85"/>
+
+    <!-- corner herb sprigs -->
+    <g stroke="#6f7d5c" stroke-width="2.6" stroke-linecap="round" fill="none">
+      <!-- top-left -->
+      <path d="M70 118 C 92 96, 112 82, 140 72"/>
+      <path d="M85 104 C 82 94, 84 86, 91 78 C 96 87, 95 96, 85 104 Z" fill="#6f7d5c" opacity="0.55"/>
+      <path d="M103 90 C 100 80, 103 71, 111 64 C 115 74, 113 83, 103 90 Z" fill="#6f7d5c" opacity="0.55"/>
+      <path d="M124 78 C 122 69, 126 61, 134 55 C 137 65, 133 73, 124 78 Z" fill="#6f7d5c" opacity="0.55"/>
+      <!-- bottom-right -->
+      <path d="M746 940 C 724 962, 704 976, 676 986"/>
+      <path d="M731 954 C 734 964, 732 972, 725 980 C 720 971, 721 962, 731 954 Z" fill="#6f7d5c" opacity="0.55"/>
+      <path d="M713 968 C 716 978, 713 987, 705 994 C 701 984, 703 975, 713 968 Z" fill="#6f7d5c" opacity="0.55"/>
+      <path d="M692 980 C 694 989, 690 997, 682 1003 C 679 993, 683 985, 692 980 Z" fill="#6f7d5c" opacity="0.55"/>
+    </g>
+
+    <!-- crescent moon, top-right -->
+    <path d="M694 86 a 24 24 0 1 0 24 32 a 19 19 0 1 1 -24 -32 Z"
+          fill="#c9973a" opacity="0.9"/>
+    <!-- twinkles -->
+    <g stroke="#c9973a" stroke-width="2.4" stroke-linecap="round">
+      <path d="M672 84 v14 M665 91 h14"/>
+      <path d="M736 140 v10 M731 145 h10"/>
+      <path d="M96 946 v14 M89 953 h14"/>
+      <path d="M140 986 v10 M135 991 h10"/>
+      <path d="M756 476 v12 M750 482 h12"/>
+      <path d="M62 500 v12 M56 506 h12"/>
+    </g>
+  </svg>
+
+  <div class="content">
+    <img class="logo" src="/solsidetransparent.png" alt="the sol side — community, arts, wellbeing" />
+    <div class="presents">~ presents ~</div>
+
+    <h1 class="title">The <span class="accent">Kitchen Witch</span><br/>Series</h1>
+    <div class="tagline">garden-fresh potions, straight from the summer garden</div>
+
+    <!-- divider: sprig with berries -->
+    <svg class="divider" width="300" height="26" viewBox="0 0 300 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 14 C 60 10, 120 16, 150 13 C 190 10, 250 16, 292 13" stroke="#a0611c" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="128" cy="12" r="4" fill="#9c4a52"/>
+      <circle cx="150" cy="9" r="4.5" fill="#9c4a52"/>
+      <circle cx="171" cy="12" r="4" fill="#9c4a52"/>
+      <path d="M150 9 C 146 3, 141 1, 135 2" stroke="#6f7d5c" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+
+    <div class="events">
+      <!-- Juicing -->
+      <div class="event">
+        <!-- juice glass doodle -->
+        <svg class="doodle" width="104" height="120" viewBox="0 0 104 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#2e2a25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 38 C 26 62, 28 88, 33 106 C 45 110, 61 110, 72 106 C 77 86, 79 60, 77 38"/>
+            <path d="M25 37 C 44 41, 62 41, 80 37"/>
+            <path d="M33 62 C 46 66, 60 66, 72 62" stroke="#a0611c"/>
+            <path d="M60 34 C 66 22, 74 12, 86 6" stroke="#6f7d5c"/>
+            <path d="M83 14 C 82 8, 85 3, 92 1 C 94 8, 90 13, 83 14 Z" fill="#6f7d5c" stroke="#6f7d5c"/>
+          </g>
+          <!-- orange slice on rim -->
+          <path d="M22 26 a 12 12 0 0 1 24 0 Z" fill="#c9973a" stroke="#a0611c" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M34 26 v-9 M28 26 l-4 -7 M40 26 l4 -7" stroke="#fdfaf6" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- juice fill squiggle -->
+          <path d="M34 72 C 44 76, 60 76, 71 72 C 72 84, 70 96, 68 102 C 57 105, 47 105, 37 102 C 35 94, 34 82, 34 72 Z"
+                fill="#c9973a" opacity="0.5"/>
+          <g stroke="#c9973a" stroke-width="2.2" stroke-linecap="round">
+            <path d="M14 52 v10 M9 57 h10"/>
+            <path d="M92 44 v8 M88 48 h8"/>
+          </g>
+        </svg>
+        <div class="event-when">Sat · July 25 · 1 pm</div>
+        <div class="event-name">Garden Fresh<br/>Juicing Class</div>
+        <div class="event-sub">&amp; complimentary juice tasting</div>
+      </div>
+
+      <!-- Smoothies -->
+      <div class="event">
+        <!-- mason jar smoothie doodle -->
+        <svg class="doodle" width="104" height="120" viewBox="0 0 104 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#2e2a25" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 34 C 28 38, 27 44, 28 52 C 28 74, 29 94, 33 106 C 45 110, 60 110, 71 106 C 75 92, 76 72, 76 52 C 77 44, 76 38, 72 34"/>
+            <path d="M30 33 C 45 36, 60 36, 74 33 C 75 28, 74 24, 72 22 C 59 25, 46 25, 32 22 C 30 24, 29 28, 30 33 Z"/>
+            <path d="M46 22 C 50 14, 56 7, 64 2" stroke="#9c4a52" stroke-width="3.4"/>
+          </g>
+          <!-- smoothie fill -->
+          <path d="M31 56 C 44 61, 61 61, 73 56 C 73 76, 72 92, 69 103 C 58 106, 47 106, 36 103 C 32 90, 31 72, 31 56 Z"
+                fill="#9c4a52" opacity="0.45"/>
+          <path d="M31 56 C 44 61, 61 61, 73 56" stroke="#9c4a52" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+          <!-- berries + leaf -->
+          <circle cx="16" cy="30" r="6" fill="#9c4a52"/>
+          <circle cx="90" cy="58" r="5" fill="#9c4a52"/>
+          <path d="M16 24 C 13 18, 14 14, 19 11 C 22 16, 21 21, 16 24 Z" fill="#6f7d5c"/>
+          <g stroke="#c9973a" stroke-width="2.2" stroke-linecap="round">
+            <path d="M90 22 v10 M85 27 h10"/>
+            <path d="M12 74 v8 M8 78 h8"/>
+          </g>
+        </svg>
+        <div class="event-when">Sun · July 26 · 3 pm</div>
+        <div class="event-name">Garden Fresh<br/>Smoothie Class</div>
+        <div class="event-sub">&amp; complimentary smoothie tasting</div>
+      </div>
+    </div>
+
+    <div class="footer-note">everyone welcome <span class="sep">✶</span> suggested donation $15</div>
+    <div class="learn">sip, stir &amp; learn a little garden magic with us</div>
+
+    <div class="where">
+      113 Alexander Pl, Swannanoa, NC<br/>
+      <span class="site">thesolside.com</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
