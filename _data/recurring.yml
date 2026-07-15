@@ -29,6 +29,12 @@
   time: "07:30"
 
 - month: "2026-07"
+  class_id: rocking-rolling-joints
+  day: Saturday
+  time: "11:00"
+  note: "Starts July 25"
+
+- month: "2026-07"
   class_id: evolving-pilates
   day: Saturday
   time: "12:00"

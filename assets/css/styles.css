@@ -542,6 +542,12 @@ section {
   white-space: nowrap;
 }
 
+.event__tag--note {
+  color: var(--bg);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
 .event__price {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
@@ -580,6 +586,7 @@ section {
     padding: 0.04rem 0.4rem;
     background: none;
   }
+  .event__tag--note { color: var(--gold); }
   .event__price { font-size: 0.72rem; }
 
   /* Two-column print layout — fit within the page box, no screen full-bleed */

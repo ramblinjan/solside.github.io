@@ -62,8 +62,9 @@ function taglineEl(short) {
   return short ? `<span class="event__tagline">${short}</span>` : '';
 }
 
-function metaLine(audience, price) {
+function metaLine(audience, price, note) {
   const parts = [];
+  if (note) parts.push(`<span class="event__tag event__tag--note">${note}</span>`);
   if (audience) parts.push(`<span class="event__tag">${audience}</span>`);
   if (price) parts.push(`<span class="event__price">${price}</span>`);
   return parts.length ? `<div class="event__meta">${parts.join('')}</div>` : '';
@@ -125,7 +126,7 @@ function render() {
           <span class="event__time"><span class="event__badge event__badge--time">${formatTimeRange(r.time, duration_min)}</span></span>
           <div class="event__body">
             <span class="event__name"${tooltipAttrs(description)}>${makeTitle(title, url, isPrereg ? null : description)}</span>
-            <span class="event__with">${INSTRUCTORS[instructor_id]?.name ?? instructor_id}</span>${taglineEl(short_description)}${metaLine(audience)}${isPrereg ? registerLine(phone, email) : ''}
+            <span class="event__with">${INSTRUCTORS[instructor_id]?.name ?? instructor_id}</span>${taglineEl(short_description)}${metaLine(audience, null, r.note)}${isPrereg ? registerLine(phone, email) : ''}
           </div>
         </li>`;
     }).join('');
