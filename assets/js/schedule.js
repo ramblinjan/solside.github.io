@@ -183,6 +183,77 @@ function render() {
 
 document.getElementById('print-btn')?.addEventListener('click', () => window.print());
 
+// ── Save as image ───────────────────────────────────────────────────────────
+// Captures the page with the print stylesheet applied, so the image matches
+// what the Print button would produce (letter-width layout, print-only bits).
+
+const PRINT_PAGE_WIDTH = 816; // 8.5in letter at 96dpi
+
+function loadHtml2Canvas() {
+  if (window.html2canvas) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.onload = resolve;
+    s.onerror = () => reject(new Error('Could not load image library'));
+    document.head.appendChild(s);
+  });
+}
+
+// Make every @media print rule in the cloned document apply on screen.
+function applyPrintStyles(doc) {
+  for (const sheet of doc.styleSheets) {
+    let rules;
+    try { rules = sheet.cssRules; } catch { continue; } // cross-origin (fonts)
+    for (const rule of rules) {
+      if (rule.media && Array.from(rule.media).includes('print')) {
+        rule.media.appendMedium('all');
+      }
+    }
+  }
+  // html2canvas ignores @page margins; pad the body to match the printed
+  // sheet (0.15in top/bottom, 0.35in sides at 96dpi).
+  doc.body.style.padding = '14px 34px';
+}
+
+async function captureScheduleCanvas() {
+  await loadHtml2Canvas();
+  // html2canvas builds pseudo-elements from the live document's computed
+  // styles (before onclone runs), and it paints the hidden hover tooltips
+  // as opaque boxes. Strip the attributes for the capture, then restore.
+  const tipped = Array.from(document.querySelectorAll('[data-tooltip]'))
+    .map(el => [el, el.getAttribute('data-tooltip')]);
+  tipped.forEach(([el]) => el.removeAttribute('data-tooltip'));
+  try {
+    return await window.html2canvas(document.body, {
+      windowWidth: PRINT_PAGE_WIDTH,
+      backgroundColor: '#ffffff',
+      scale: 2,
+      useCORS: true,
+      onclone: applyPrintStyles,
+    });
+  } finally {
+    tipped.forEach(([el, v]) => el.setAttribute('data-tooltip', v));
+  }
+}
+
+document.getElementById('save-img-btn')?.addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  btn.disabled = true;
+  try {
+    const canvas = await captureScheduleCanvas();
+    const a = document.createElement('a');
+    a.download = 'the-sol-side-july-2026-schedule.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  } catch (err) {
+    alert('Sorry, saving the image failed. Please try the Print button instead.');
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+  }
+});
+
 // ── Init ────────────────────────────────────────────────────────────────────
 
 render();
