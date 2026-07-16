@@ -243,6 +243,14 @@ section {
   gap: 0.4rem;
 }
 
+.print-btn--save {
+  margin-top: 0.4rem;
+}
+.print-btn--save[disabled] {
+  opacity: 0.5;
+  cursor: wait;
+}
+
 .print-placeholder {
   display: none;
   border: 1px solid var(--rule);
@@ -626,8 +634,7 @@ section {
   font-weight: 300;
 }
 
-.event__with::before {
-  content: ' · ';
+.event__with-sep {
   font-style: normal;
   color: var(--rule);
 }
