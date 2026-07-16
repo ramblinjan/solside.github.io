@@ -85,13 +85,6 @@ function sectionTitle(t) {
   return `<h2 class="schedule__section-title">${t}</h2>`;
 }
 
-// The " · " separator used to be CSS-generated content (.event__with::before),
-// but html2canvas trims the leading space of generated content, so it's real
-// markup instead — kept visually identical via .event__with-sep.
-function withEl(text) {
-  return text ? `<span class="event__with"><span class="event__with-sep">· </span>${text}</span>` : '';
-}
-
 // ── Render ──────────────────────────────────────────────────────────────────
 
 function render() {
@@ -133,7 +126,7 @@ function render() {
           <span class="event__time"><span class="event__badge event__badge--time">${formatTimeRange(r.time, duration_min)}</span></span>
           <div class="event__body">
             <span class="event__name"${tooltipAttrs(description)}>${makeTitle(title, url, isPrereg ? null : description)}</span>
-            ${withEl(INSTRUCTORS[instructor_id]?.name ?? instructor_id)}${taglineEl(short_description)}${metaLine(audience, null, r.note)}${isPrereg ? registerLine(phone, email) : ''}
+            <span class="event__with">${INSTRUCTORS[instructor_id]?.name ?? instructor_id}</span>${taglineEl(short_description)}${metaLine(audience, null, r.note)}${isPrereg ? registerLine(phone, email) : ''}
           </div>
         </li>`;
     }).join('');
@@ -163,7 +156,7 @@ function render() {
         return `
             <li class="event-card__item">
               <span class="event__name"${tooltipAttrs(wDesc)}>${makeTitle(timeStr + w.title, w.url, wDesc)}</span>
-              ${withEl(instructor)}${metaLine(w.audience, w.price)}
+              <span class="event__with">${instructor}</span>${metaLine(w.audience, w.price)}
             </li>`;
       }).join('');
     return `
@@ -189,105 +182,6 @@ function render() {
 // ── Print ───────────────────────────────────────────────────────────────────
 
 document.getElementById('print-btn')?.addEventListener('click', () => window.print());
-
-// ── Save as image ───────────────────────────────────────────────────────────
-// Captures the page with the print stylesheet applied, so the image matches
-// what the Print button would produce (letter-width layout, print-only bits).
-
-const PRINT_PAGE_WIDTH = 816; // 8.5in letter at 96dpi
-const CAPTURE_WRAPPER_ID = '__print-capture-wrapper';
-
-function loadHtml2Canvas() {
-  if (window.html2canvas) return Promise.resolve();
-  return new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
-    s.onload = resolve;
-    s.onerror = () => reject(new Error('Could not load image library'));
-    document.head.appendChild(s);
-  });
-}
-
-// Make every @media print rule in the cloned document apply on screen.
-function applyPrintStyles(doc) {
-  for (const sheet of doc.styleSheets) {
-    let rules;
-    try { rules = sheet.cssRules; } catch { continue; } // cross-origin (fonts)
-    for (const rule of rules) {
-      if (rule.media && Array.from(rule.media).includes('print')) {
-        rule.media.appendMedium('all');
-      }
-    }
-  }
-  // html2canvas ignores @page margins; pad the capture root to match the
-  // printed sheet (0.15in top/bottom, 0.35in sides at 96dpi). The capture
-  // root is the wrapper div (see captureScheduleCanvas), not body itself.
-  const root = doc.getElementById(CAPTURE_WRAPPER_ID) || doc.body;
-  root.style.padding = '14px 34px';
-  // html2canvas doesn't reliably honor CSS display:none on inline <svg>
-  // elements (it renders the calendar icon as a garbled glyph regardless
-  // of the @media print rule), so remove it from the clone outright.
-  doc.querySelectorAll('.event__icon-cal').forEach(el => el.remove());
-}
-
-async function captureScheduleCanvas() {
-  await loadHtml2Canvas();
-  // html2canvas resolves ::before/::after pseudo-elements from the LIVE
-  // document's computed styles before onclone ever runs, so style changes
-  // made only inside onclone are too late for them. The tooltip fix below
-  // works around this by removing the DOM attribute the selector keys on
-  // (data-tooltip), which the clone then simply never has.
-  const tipped = Array.from(document.querySelectorAll('[data-tooltip]'))
-    .map(el => [el, el.getAttribute('data-tooltip')]);
-  tipped.forEach(([el]) => el.removeAttribute('data-tooltip'));
-
-  // Sidestep the broken body::before watermark by capturing a plain <div>
-  // holding clones of body's children instead of body itself, positioned
-  // fixed/full-width rather than off-screen (some of this page's CSS —
-  // the two-column schedule layout — uses `vw` units for a deliberate
-  // full-bleed effect that only resolves sanely in a normal, viewport-
-  // flush context; an off-screen `left: -99999px` div breaks that math).
-  const wrapper = document.createElement('div');
-  wrapper.id = CAPTURE_WRAPPER_ID;
-  wrapper.style.cssText = 'position:fixed; top:0; left:0; width:100%; z-index:99999; background:#fff;';
-  Array.from(document.body.children).forEach(el => wrapper.appendChild(el.cloneNode(true)));
-
-  // Appended to <html> rather than <body>: body is the ancestor that
-  // hosts the broken ::before ghost, and even with body::before's rule
-  // stripped from every reachable stylesheet, some remnant of it still
-  // bleeds into captures where the target is a body descendant.
-  document.documentElement.appendChild(wrapper);
-
-  try {
-    return await window.html2canvas(wrapper, {
-      windowWidth: PRINT_PAGE_WIDTH,
-      backgroundColor: '#ffffff',
-      scale: 2,
-      useCORS: true,
-      onclone: applyPrintStyles,
-    });
-  } finally {
-    tipped.forEach(([el, v]) => el.setAttribute('data-tooltip', v));
-    wrapper.remove();
-  }
-}
-
-document.getElementById('save-img-btn')?.addEventListener('click', async (e) => {
-  const btn = e.currentTarget;
-  btn.disabled = true;
-  try {
-    const canvas = await captureScheduleCanvas();
-    const a = document.createElement('a');
-    a.download = 'the-sol-side-july-2026-schedule.png';
-    a.href = canvas.toDataURL('image/png');
-    a.click();
-  } catch (err) {
-    alert('Sorry, saving the image failed. Please try the Print button instead.');
-    console.error(err);
-  } finally {
-    btn.disabled = false;
-  }
-});
 
 // ── Init ────────────────────────────────────────────────────────────────────
 
