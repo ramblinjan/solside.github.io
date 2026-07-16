@@ -85,6 +85,13 @@ function sectionTitle(t) {
   return `<h2 class="schedule__section-title">${t}</h2>`;
 }
 
+// The " · " separator used to be CSS-generated content (.event__with::before),
+// but html2canvas trims the leading space of generated content, so it's real
+// markup instead — kept visually identical via .event__with-sep.
+function withEl(text) {
+  return text ? `<span class="event__with"><span class="event__with-sep">· </span>${text}</span>` : '';
+}
+
 // ── Render ──────────────────────────────────────────────────────────────────
 
 function render() {
@@ -126,7 +133,7 @@ function render() {
           <span class="event__time"><span class="event__badge event__badge--time">${formatTimeRange(r.time, duration_min)}</span></span>
           <div class="event__body">
             <span class="event__name"${tooltipAttrs(description)}>${makeTitle(title, url, isPrereg ? null : description)}</span>
-            <span class="event__with">${INSTRUCTORS[instructor_id]?.name ?? instructor_id}</span>${taglineEl(short_description)}${metaLine(audience, null, r.note)}${isPrereg ? registerLine(phone, email) : ''}
+            ${withEl(INSTRUCTORS[instructor_id]?.name ?? instructor_id)}${taglineEl(short_description)}${metaLine(audience, null, r.note)}${isPrereg ? registerLine(phone, email) : ''}
           </div>
         </li>`;
     }).join('');
@@ -156,7 +163,7 @@ function render() {
         return `
             <li class="event-card__item">
               <span class="event__name"${tooltipAttrs(wDesc)}>${makeTitle(timeStr + w.title, w.url, wDesc)}</span>
-              <span class="event__with">${instructor}</span>${metaLine(w.audience, w.price)}
+              ${withEl(instructor)}${metaLine(w.audience, w.price)}
             </li>`;
       }).join('');
     return `
@@ -214,6 +221,10 @@ function applyPrintStyles(doc) {
   // html2canvas ignores @page margins; pad the body to match the printed
   // sheet (0.15in top/bottom, 0.35in sides at 96dpi).
   doc.body.style.padding = '14px 34px';
+  // html2canvas doesn't reliably honor CSS display:none on inline <svg>
+  // elements (it renders the calendar icon as a garbled glyph regardless
+  // of the @media print rule), so remove it from the clone outright.
+  doc.querySelectorAll('.event__icon-cal').forEach(el => el.remove());
 }
 
 async function captureScheduleCanvas() {
