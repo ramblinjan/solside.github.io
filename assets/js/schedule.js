@@ -267,6 +267,49 @@ async function withoutWatermarkStylesheet(fn) {
   }
 }
 
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`Could not load ${src}`));
+    img.src = src;
+  });
+}
+
+// html2canvas's internal print-styled render comes out noticeably shorter
+// than the same content measured in the live, non-print DOM (smaller print
+// fonts/spacing), so there's no reliable way to predict the true content
+// height ahead of time — find it by scanning the finished canvas for the
+// last row that isn't blank page background instead.
+function findContentBottom(ctx, width, height) {
+  const rowStep = 8;
+  let bottom = height;
+  for (let y = height - 1; y >= 0; y -= rowStep) {
+    const row = ctx.getImageData(0, y, width, 1).data;
+    for (let x = 0; x < width; x += 4) {
+      const i = x * 4;
+      if (row[i] < 250 || row[i + 1] < 250 || row[i + 2] < 250) return y;
+    }
+  }
+  return bottom;
+}
+
+// Paints the watermark straight onto the finished canvas with the 2D
+// context's own alpha compositing — see the long comment in
+// captureScheduleCanvas for why this bypasses html2canvas entirely.
+async function drawWatermark(canvas) {
+  const img = await loadImage('/solsidetransparent.png');
+  const ctx = canvas.getContext('2d');
+  const contentBottom = findContentBottom(ctx, canvas.width, canvas.height);
+  const size = Math.min(canvas.width, contentBottom) * 0.55;
+  const x = (canvas.width - size) / 2;
+  const y = (contentBottom - size) / 2;
+  ctx.save();
+  ctx.globalAlpha = 0.07;
+  ctx.drawImage(img, x, y, size, size);
+  ctx.restore();
+}
+
 async function captureScheduleCanvas() {
   await loadHtml2Canvas();
   // html2canvas resolves ::before/::after pseudo-elements from the LIVE
@@ -278,27 +321,47 @@ async function captureScheduleCanvas() {
     .map(el => [el, el.getAttribute('data-tooltip')]);
   tipped.forEach(([el]) => el.removeAttribute('data-tooltip'));
 
-  // Sidestep the watermark being scoped to <body> too: capture a plain
-  // <div> holding clones of body's children instead of body itself.
-  // Positioned fixed/full-width rather than off-screen, since some of
-  // this page's CSS (the two-column schedule layout) uses `vw` units for
-  // a deliberate full-bleed effect that only resolves sanely in a normal,
-  // viewport-flush context — an off-screen `left: -99999px` div breaks
-  // that math and blows the layout out wide.
+  // Sidestep the broken body::before watermark by capturing a plain <div>
+  // holding clones of body's children instead of body itself, positioned
+  // fixed/full-width rather than off-screen (some of this page's CSS —
+  // the two-column schedule layout — uses `vw` units for a deliberate
+  // full-bleed effect that only resolves sanely in a normal, viewport-
+  // flush context; an off-screen `left: -99999px` div breaks that math).
   const wrapper = document.createElement('div');
   wrapper.id = CAPTURE_WRAPPER_ID;
   wrapper.style.cssText = 'position:fixed; top:0; left:0; width:100%; z-index:99999; background:#fff;';
   Array.from(document.body.children).forEach(el => wrapper.appendChild(el.cloneNode(true)));
-  document.body.appendChild(wrapper);
+
+  // Appended to <html> rather than <body>: body is the ancestor that
+  // hosts the broken ::before ghost, and even with body::before's rule
+  // stripped from every reachable stylesheet, some remnant of it still
+  // bleeds into captures where the target is a body descendant.
+  document.documentElement.appendChild(wrapper);
 
   try {
-    return await withoutWatermarkStylesheet(() => window.html2canvas(wrapper, {
+    const canvas = await withoutWatermarkStylesheet(() => window.html2canvas(wrapper, {
       windowWidth: PRINT_PAGE_WIDTH,
       backgroundColor: '#ffffff',
       scale: 2,
       useCORS: true,
       onclone: applyPrintStyles,
     }));
+    // The watermark is added last, painted directly onto the finished
+    // canvas via plain Canvas 2D drawImage — not as an element html2canvas
+    // renders. html2canvas cannot be made to render solsidetransparent.png
+    // correctly by any means tried: not as body::before (overriding the
+    // rule, deleting the CSSOM rule, and swapping out the stylesheet file
+    // entirely all failed to stop a mispositioned, oversized ghost from
+    // appearing), and not even as an ordinary <img> in the capture tree
+    // (sized with plain width/height attributes and margin-based
+    // centering, no transforms or percentages) — it still rendered at
+    // native size and full opacity, duplicated alongside the ghost.
+    // Drawing straight onto the output bitmap sidesteps html2canvas's
+    // element pipeline for this one image entirely, so it's the only
+    // approach that has actually produced a correctly sized, correctly
+    // faint mark.
+    await drawWatermark(canvas);
+    return canvas;
   } finally {
     tipped.forEach(([el, v]) => el.setAttribute('data-tooltip', v));
     wrapper.remove();
