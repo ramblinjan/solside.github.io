@@ -195,6 +195,7 @@ document.getElementById('print-btn')?.addEventListener('click', () => window.pri
 // what the Print button would produce (letter-width layout, print-only bits).
 
 const PRINT_PAGE_WIDTH = 816; // 8.5in letter at 96dpi
+const CAPTURE_WRAPPER_ID = '__print-capture-wrapper';
 
 function loadHtml2Canvas() {
   if (window.html2canvas) return Promise.resolve();
@@ -218,33 +219,89 @@ function applyPrintStyles(doc) {
       }
     }
   }
-  // html2canvas ignores @page margins; pad the body to match the printed
-  // sheet (0.15in top/bottom, 0.35in sides at 96dpi).
-  doc.body.style.padding = '14px 34px';
+  // html2canvas ignores @page margins; pad the capture root to match the
+  // printed sheet (0.15in top/bottom, 0.35in sides at 96dpi). The capture
+  // root is the wrapper div (see captureScheduleCanvas), not body itself.
+  const root = doc.getElementById(CAPTURE_WRAPPER_ID) || doc.body;
+  root.style.padding = '14px 34px';
   // html2canvas doesn't reliably honor CSS display:none on inline <svg>
   // elements (it renders the calendar icon as a garbled glyph regardless
   // of the @media print rule), so remove it from the clone outright.
   doc.querySelectorAll('.event__icon-cal').forEach(el => el.remove());
 }
 
+// Neither overriding body::before with an !important rule nor deleting the
+// CSSOM rule (both tried) stops html2canvas from painting the watermark —
+// it keeps rendering it, mispositioned, regardless. That only makes sense
+// if html2canvas re-fetches linked stylesheets over the network to build
+// its own internal representation rather than reading the live, JS-mutated
+// CSSOM — so any in-page mutation is invisible to it. The reliable fix:
+// swap the external stylesheet <link> out for an inline <style> holding
+// the same rules minus body::before, so there's no external copy left for
+// it to independently re-fetch.
+async function withoutWatermarkStylesheet(fn) {
+  const replacements = [];
+  for (const link of document.querySelectorAll('link[rel="stylesheet"]')) {
+    let rules;
+    try { rules = link.sheet.cssRules; } catch { continue; } // cross-origin (fonts) — leave alone
+    if (![...rules].some(rule => rule.selectorText === 'body::before')) continue; // nothing to strip
+    const cssText = [...rules]
+      .filter(rule => rule.selectorText !== 'body::before')
+      .map(rule => rule.cssText)
+      .join('\n');
+    const inline = document.createElement('style');
+    inline.textContent = cssText;
+    link.insertAdjacentElement('afterend', inline);
+    link.disabled = true;
+    link.remove();
+    replacements.push({ link, inline });
+  }
+  try {
+    return await fn();
+  } finally {
+    replacements.forEach(({ link, inline }) => {
+      inline.insertAdjacentElement('afterend', link);
+      link.disabled = false;
+      inline.remove();
+    });
+  }
+}
+
 async function captureScheduleCanvas() {
   await loadHtml2Canvas();
-  // html2canvas builds pseudo-elements from the live document's computed
-  // styles (before onclone runs), and it paints the hidden hover tooltips
-  // as opaque boxes. Strip the attributes for the capture, then restore.
+  // html2canvas resolves ::before/::after pseudo-elements from the LIVE
+  // document's computed styles before onclone ever runs, so style changes
+  // made only inside onclone are too late for them. The tooltip fix below
+  // works around this by removing the DOM attribute the selector keys on
+  // (data-tooltip), which the clone then simply never has.
   const tipped = Array.from(document.querySelectorAll('[data-tooltip]'))
     .map(el => [el, el.getAttribute('data-tooltip')]);
   tipped.forEach(([el]) => el.removeAttribute('data-tooltip'));
+
+  // Sidestep the watermark being scoped to <body> too: capture a plain
+  // <div> holding clones of body's children instead of body itself.
+  // Positioned fixed/full-width rather than off-screen, since some of
+  // this page's CSS (the two-column schedule layout) uses `vw` units for
+  // a deliberate full-bleed effect that only resolves sanely in a normal,
+  // viewport-flush context — an off-screen `left: -99999px` div breaks
+  // that math and blows the layout out wide.
+  const wrapper = document.createElement('div');
+  wrapper.id = CAPTURE_WRAPPER_ID;
+  wrapper.style.cssText = 'position:fixed; top:0; left:0; width:100%; z-index:99999; background:#fff;';
+  Array.from(document.body.children).forEach(el => wrapper.appendChild(el.cloneNode(true)));
+  document.body.appendChild(wrapper);
+
   try {
-    return await window.html2canvas(document.body, {
+    return await withoutWatermarkStylesheet(() => window.html2canvas(wrapper, {
       windowWidth: PRINT_PAGE_WIDTH,
       backgroundColor: '#ffffff',
       scale: 2,
       useCORS: true,
       onclone: applyPrintStyles,
-    });
+    }));
   } finally {
     tipped.forEach(([el, v]) => el.setAttribute('data-tooltip', v));
+    wrapper.remove();
   }
 }
 
