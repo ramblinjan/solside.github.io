@@ -107,7 +107,7 @@ function render() {
   );
 
   const labelEl = document.getElementById('week-month-label');
-  if (labelEl) labelEl.textContent = 'July 2026 Schedule';
+  if (labelEl) labelEl.textContent = 'Summer Schedule';
 
   const qrLink = document.getElementById('qr-link');
   const qrCode = document.getElementById('qr-code');
@@ -278,7 +278,7 @@ document.getElementById('save-img-btn')?.addEventListener('click', async (e) => 
   try {
     const canvas = await captureScheduleCanvas();
     const a = document.createElement('a');
-    a.download = 'the-sol-side-july-2026-schedule.png';
+    a.download = 'the-sol-side-summer-schedule.png';
     a.href = canvas.toDataURL('image/png');
     a.click();
   } catch (err) {
