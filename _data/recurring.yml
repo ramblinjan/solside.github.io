@@ -1,9 +1,4 @@
 - month: "2026-07"
-  class_id: heart-of-tantra-yoga
-  day: Tuesday
-  time: "17:00"
-
-- month: "2026-07"
   class_id: evolving-pilates
   day: Wednesday
   time: "10:00"
@@ -24,15 +19,9 @@
   time: "18:00"
 
 - month: "2026-07"
-  class_id: heart-of-tantra-yoga
-  day: Friday
-  time: "07:30"
-
-- month: "2026-07"
   class_id: rocking-rolling-joints
   day: Saturday
   time: "11:00"
-  note: "Starts July 25"
 
 - month: "2026-07"
   class_id: evolving-pilates

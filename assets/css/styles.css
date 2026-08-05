@@ -326,6 +326,16 @@ section {
   }
 }
 
+.schedule__coming-soon {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+
 /* Per-date special-event cards */
 .event-card {
   border: 1px solid var(--rule);

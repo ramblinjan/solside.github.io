@@ -2,40 +2,4 @@
 # enables a time range), title, instructor_id (optional), short_description,
 # description, url (booking link, optional), audience (optional), price (optional).
 #
-
-- date: "2026-07-04"
-  time: "14:00"
-  title: "Dark City DJs Potluck Barbecue & Open House"
-  audience: "Everyone welcome"
-  short_description: "A community potluck barbecue and open house with the Dark City DJs."
-
-- date: "2026-07-11"
-  time: "16:00"
-  duration_min: 90
-  title: "Myofascial Movement, Meditation & Sound Bath"
-  instructor_id: nick-emily
-  audience: "Everyone welcome"
-  price: "Pay what you can · suggested donation $40"
-  url: "https://solbody.as.me/schedule/e12d02d4"
-
-- date: "2026-07-25"
-  time: "13:00"
-  title: "Kitchen Witch Series · Garden Fresh Juicing Class & Complimentary Juice Tasting"
-  audience: "Everyone welcome"
-  price: "Suggested donation $15"
-  url: "https://solbody.as.me/schedule/e12d02d4"
-
-- date: "2026-07-26"
-  time: "15:00"
-  title: "Kitchen Witch Series · Garden Fresh Smoothie Class & Complimentary Smoothie Tasting"
-  audience: "Everyone welcome"
-  price: "Suggested donation $15"
-  url: "https://solbody.as.me/schedule/e12d02d4"
-
-- date: "2026-07-26"
-  time: "16:00"
-  title: "Family Myofascial Release & Movement"
-  instructor_id: emily-smith
-  audience: "Everyone welcome"
-  price: "Suggested donation $15"
-  url: "https://solbody.as.me/schedule/e12d02d4"
+[]

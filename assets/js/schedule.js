@@ -178,11 +178,11 @@ function render() {
       <div class="schedule-col schedule-col--weekly">
         ${sectionTitle('Weekly Classes')}
         ${weeklyHtml}
-      </div>${cardsHtml ? `
+      </div>
       <aside class="schedule-col schedule-col--special">
         ${sectionTitle('Special Events')}
-        ${cardsHtml}
-      </aside>` : ''}
+        ${cardsHtml || '<p class="schedule__coming-soon">More Workshops Coming Soon at thesolside.com</p>'}
+      </aside>
     </div>`;
 }
 
