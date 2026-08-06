@@ -85,6 +85,20 @@ function sectionTitle(t) {
   return `<h2 class="schedule__section-title">${t}</h2>`;
 }
 
+function flyerEl(w) {
+  if (!w.flyer_thumb) return '';
+  const full = escAttr(w.flyer_full || w.flyer_thumb);
+  const pdf = escAttr(w.flyer_pdf || '');
+  const alt = escAttr(`${w.title} flyer`);
+  return `
+              <div class="event__flyer-preview">
+                <p class="event__flyer-label">Click to view flyer:</p>
+                <button type="button" class="event__flyer" data-flyer-full="${full}" data-flyer-pdf="${pdf}" aria-label="View flyer for ${escAttr(w.title)}">
+                  <img src="${escAttr(w.flyer_thumb)}" alt="${alt}" loading="lazy">
+                </button>
+              </div>`;
+}
+
 // The " · " separator used to be CSS-generated content (.event__with::before),
 // but html2canvas trims the leading space of generated content, so it's real
 // markup instead — kept visually identical via .event__with-sep.
@@ -95,7 +109,7 @@ function withEl(text) {
 // ── Render ──────────────────────────────────────────────────────────────────
 
 function render() {
-  const ym = '2026-07';
+  const ym = '2026-08';
   const DAY_ORDER = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
   const byDay = {};
@@ -160,15 +174,17 @@ function render() {
         const instructor = INSTRUCTORS[w.instructor_id]?.name ?? w.instructor_id ?? '';
         const timeStr = w.time ? formatTimeRange(w.time, w.duration_min) + ' · ' : '';
         const wDesc = w.description || w.short_description;
+        const isPrereg = !w.url && (w.register_phone || w.register_email);
         return `
             <li class="event-card__item">
-              <span class="event__name"${tooltipAttrs(wDesc)}>${makeTitle(timeStr + w.title, w.url, wDesc)}</span>
-              ${withEl(instructor)}${metaLine(w.audience, w.price)}
+              <span class="event__name"${tooltipAttrs(wDesc)}>${makeTitle(timeStr + w.title, w.url, isPrereg ? null : wDesc)}</span>
+              ${withEl(instructor)}${metaLine(w.audience, w.price, w.note)}${isPrereg ? registerLine(w.register_phone, w.register_email) : ''}${flyerEl(w)}
             </li>`;
       }).join('');
+    const dateHeader = byDate[date][0].date_label || `${weekday} · ${md}`;
     return `
         <article class="event-card">
-          <h4 class="event-card__date">${weekday} · ${md}</h4>
+          <h4 class="event-card__date">${dateHeader}</h4>
           <ul class="event-card__list">${items}</ul>
         </article>`;
   }).join('');
@@ -185,6 +201,63 @@ function render() {
       </aside>
     </div>`;
 }
+
+// ── Flyer lightbox ─────────────────────────────────────────────────────────
+
+function ensureLightbox() {
+  if (document.getElementById('flyer-lightbox')) return;
+  const el = document.createElement('div');
+  el.id = 'flyer-lightbox';
+  el.className = 'lightbox';
+  el.hidden = true;
+  el.innerHTML = `
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Flyer preview">
+      <div class="lightbox__bar">
+        <a id="lightbox-download" class="lightbox__download" download>Download PDF</a>
+        <button type="button" class="lightbox__close" data-lightbox-close aria-label="Close">&times;</button>
+      </div>
+      <div class="lightbox__body">
+        <img id="lightbox-image" class="lightbox__image" src="" alt="">
+      </div>
+    </div>`;
+  document.body.appendChild(el);
+  el.addEventListener('click', e => {
+    if (e.target.closest('[data-lightbox-close]')) closeLightbox();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+}
+
+function openLightbox(fullSrc, pdfHref, alt) {
+  ensureLightbox();
+  const img = document.getElementById('lightbox-image');
+  const dl = document.getElementById('lightbox-download');
+  img.src = fullSrc;
+  img.alt = alt || '';
+  if (pdfHref) {
+    dl.href = pdfHref;
+    dl.style.display = '';
+  } else {
+    dl.removeAttribute('href');
+    dl.style.display = 'none';
+  }
+  document.getElementById('flyer-lightbox').hidden = false;
+}
+
+function closeLightbox() {
+  const el = document.getElementById('flyer-lightbox');
+  if (!el) return;
+  el.hidden = true;
+  document.getElementById('lightbox-image').src = '';
+}
+
+document.getElementById('schedule-output')?.addEventListener('click', e => {
+  const btn = e.target.closest('.event__flyer');
+  if (!btn) return;
+  openLightbox(btn.dataset.flyerFull, btn.dataset.flyerPdf, btn.querySelector('img')?.alt);
+});
 
 // ── Print ───────────────────────────────────────────────────────────────────
 

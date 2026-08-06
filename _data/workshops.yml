@@ -1,5 +1,25 @@
 # Special events / one-off workshops. Fields: date, time, duration_min (optional,
 # enables a time range), title, instructor_id (optional), short_description,
-# description, url (booking link, optional), audience (optional), price (optional).
-#
-[]
+# description, url (booking link, optional), audience (optional), price (optional),
+# note (optional, small highlighted tag), register_phone/register_email (optional,
+# shown as a preregister line instead of a booking link when there's no url),
+# date_label (optional, overrides the auto weekday+date card header — use for a
+# recurring multi-week series shown as a single card, e.g. "Mondays · August 24 –
+# September 28"; `date` still anchors which month the card shows under). flyer_thumb
+# (optional, small clickable preview image shown under the item — pairs with
+# flyer_full for the larger lightbox image and flyer_pdf for the lightbox's
+# download link; omit flyer_full to just reuse flyer_thumb in the lightbox too).
+
+- date: "2026-08-24"
+  date_label: "Mondays · August 24 – September 28"
+  time: "16:30"
+  duration_min: 120
+  title: Come With What You Carry
+  instructor_id: clare-duplace
+  description: "An invitation to be a sacred witness to yourself and to each other. Exploring grief from a holistic approach — listening (grief-themed talks), journaling, sharing/reflection, and body-based practices (meditation and yoga). Preferably present for at least 4 of the 6 sessions; weekly integration practices sent by email."
+  note: "6-Week Series"
+  price: "$360 (weekly or all at once)"
+  register_email: cluvyd@gmail.com
+  flyer_thumb: /assets/images/somatic-flyer-thumb.png
+  flyer_full: /assets/images/somatic-flyer-full.png
+  flyer_pdf: /assets/somatic-flyer.pdf

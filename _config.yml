@@ -13,4 +13,4 @@ exclude:
   - people/
   - forms/
   - ROADMAP.md
-  - "*.pdf"
+  - solsideopening.pdf

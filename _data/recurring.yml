@@ -27,3 +27,33 @@
   class_id: evolving-pilates
   day: Saturday
   time: "12:00"
+
+- month: "2026-08"
+  class_id: evolving-pilates
+  day: Wednesday
+  time: "10:00"
+
+- month: "2026-08"
+  class_id: qigong-flow
+  day: Wednesday
+  time: "11:00"
+
+- month: "2026-08"
+  class_id: myofascial-release-movement
+  day: Thursday
+  time: "17:00"
+
+- month: "2026-08"
+  class_id: evolving-pilates
+  day: Thursday
+  time: "18:00"
+
+- month: "2026-08"
+  class_id: rocking-rolling-joints
+  day: Saturday
+  time: "11:00"
+
+- month: "2026-08"
+  class_id: evolving-pilates
+  day: Saturday
+  time: "12:00"
